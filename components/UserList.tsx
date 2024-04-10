@@ -1,7 +1,6 @@
-
 import React, { useEffect, useState, } from 'react';
 import { getUsers } from 'services/users';
-import { List, ListItem, ListItemText, Typography, Skeleton } from '@mui/material';
+import { List, ListItem, ListItemText, Typography, Skeleton, Card } from '@mui/material';
 import { useUserStore } from 'store';
 
 type TUserItem = {
@@ -9,11 +8,9 @@ type TUserItem = {
   name: string;
 };
 
-
 function UserList() {
   const { userList, addUserList } = useUserStore();
   const [ isLoading, setIsLoading ] = useState<boolean>(false);
-
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,9 +25,8 @@ function UserList() {
     }
   }, [userList]);
 
-
   return (
-    <div>
+    <Card>
       <Typography variant="h6">Lista de Usuários</Typography>
       <List>
         {userList.map((user: TUserItem) => (
@@ -39,11 +35,11 @@ function UserList() {
             (<ListItemText primary={user.name} />)
             :
             (<Skeleton variant="rectangular" width={200} height={40} />)
-        }
+            }
           </ListItem>
         ))}
       </List>
-    </div>
+    </Card>
   );
 }
 
