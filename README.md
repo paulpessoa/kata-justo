@@ -2,7 +2,7 @@
 Este es un proyecto de ejemplo que demuestra cómo crear una aplicación web utilizando Next.js, React, Material-UI, Zustand y Axios.
 La aplicación consiste en mostrar una lista de usuarios obtenidos de una API y permite restablecer el estado de la lista de usuarios.
 
-[![chrome-capture-2024-3-10](https://github.com/paulpessoa/kata-justo/assets/74559558/c07ed0a8-634f-4f26-aabc-f3c687aad6fa)](https://kata-justo.vercel.app/){:target="_blank"}
+[![chrome-capture-2024-3-10](https://github.com/paulpessoa/kata-justo/assets/74559558/c07ed0a8-634f-4f26-aabc-f3c687aad6fa)](https://kata-justo.vercel.app/)
 
 ## Instalación
 Para ejecutar el proyecto localmente, siga los pasos a continuación:
