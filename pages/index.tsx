@@ -1,15 +1,13 @@
 
 import React from 'react';
 import Head from 'next/head';
-import { Typography, Button } from '@mui/material';
-import UserList from 'components/UserList';
-import { useUserStore } from 'store'
+import { useRouter } from 'next/router';
+import { Box, Button, Typography } from '@mui/material';
 
 export default function Home() {
-  const { resetStore } = useUserStore();
-
-  const handleResetStore = () => {
-    resetStore();
+  const router = useRouter();
+  const handleRedirectToCart = () => {
+    router.push('/cart');
   };
 
   return (
@@ -19,13 +17,27 @@ export default function Home() {
         <meta name="description" content="Kata Just Technical Interview" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main >
-        <Typography>Home</Typography>
-        <Button variant="outlined" onClick={handleResetStore}>reset Store</Button>
-        <UserList />
-      </main>
-
+      <Box
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: '100vh',
+          textAlign: 'center',
+        }}
+      >
+        <Box>
+          <Typography sx={{ color: "#ffffff", fontSize: 18 }}>Bienvenido a Kata Justo</Typography>
+          <Button onClick={handleRedirectToCart} variant="contained" sx={{
+            mt: 2,
+            backgroundColor: "#FACE39",
+            "&:hover": {
+              backgroundColor: "#d6a400"
+            },
+            color: "#000000"
+          }}>Comenzar</Button>
+        </Box>
+      </Box>
     </>
   )
 }
