@@ -4,7 +4,8 @@ import { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import { OrderItem } from 'types/types';
+import { OrderItem } from 'types';
+
 type OrderData = {
     data: OrderItem
     selected?: boolean
