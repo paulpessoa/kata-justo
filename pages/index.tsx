@@ -30,6 +30,7 @@ export default function Home() {
           <Typography sx={{ color: "#ffffff", fontSize: 18 }}>Bienvenido a Kata Justo</Typography>
           <Button onClick={handleRedirectToCart} variant="contained" sx={{
             mt: 2,
+            borderRadius: "8px",
             backgroundColor: "#FACE39",
             "&:hover": {
               backgroundColor: "#d6a400"

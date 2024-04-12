@@ -62,7 +62,7 @@ const CartPage = () => {
         fetchOrders();
     }, []);
 
-    
+
     useEffect(() => {
         const title = orderCount >= 1 ? `: ${orderCount} ${orderText}` : ' - Vale!!';
         document.title = 'Kata Justo' + title;
@@ -73,8 +73,23 @@ const CartPage = () => {
 
     return (
         <Container>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: "100vh" }}>
-                <Stack gap={2} sx={{ width: "375px", color: "#ffffff", justifyContent: "center" }}>
+            
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: "100vh" }}>
+                <Button
+                    variant="contained"
+                    sx={{
+                        width: "100%",
+                        my: 2,
+                        borderRadius: "8px",
+                        backgroundColor: "#686868", color: "#ffffff", "&:hover": {
+                            backgroundColor: "#454545"
+                        },
+                    }}
+                    onClick={handleRedirectToHome}
+                >
+                    Inicio
+                </Button>
+                <Stack gap={1} sx={{ width: "375px", color: "#ffffff", justifyContent: "center" }}>
                     <Box sx={{ width: "375px", color: "#ffffff", justifyContent: "center" }}>
                         {isLoading ? (
                             <Skeleton variant='text' sx={{ width: "100%" }} />
@@ -92,40 +107,15 @@ const CartPage = () => {
                     {isLoading ? (
                         Array.from({ length: 4 }).map((_, index) => (
                             <Skeleton key={index} height={100} />
-                        ))
-                    ) : (
-                        <>
-                            {!isError && ordersList.length >= 1 && ordersList.map((item: any) => (
-                                <OrderCard
-                                    key={item.id}
-                                    data={item}
-                                    selected={selectedItems.includes(item.id)}
-                                    handleSelect={() => handleSelectOrder(item.id)}
-                                />
-                            ))}
-
-                            {!isError && ordersList.length >= 1 && (
-                                <Button
-                                    onClick={handleRedirectToConfirm}
-                                    variant="contained"
-                                    disabled={orderCount === 0}
-                                    sx={{
-                                        color: "#000000",
-                                        backgroundColor: "#FACE39",
-                                        "&:hover": {
-                                            backgroundColor: "#d6a400"
-                                        },
-                                        "&:disabled": {
-                                            backgroundColor: "#686868"
-                                        }
-
-                                    }}
-                                >
-                                    Completar orden
-                                </Button>
-                            )}
-                        </>
-                    )}
+                        ))) :
+                        (!isError && ordersList.length >= 1 && ordersList.map((item: any) => (
+                            <OrderCard
+                                key={item.id}
+                                data={item}
+                                selected={selectedItems.includes(item.id)}
+                                handleSelect={() => handleSelectOrder(item.id)}
+                            />
+                        )))}
                 </Stack>
                 {(ordersList.length === 0 || isError && !isLoading) && (
                     <Box mt={2} sx={{ display: "flex", flexDirection: "column", alignContent: "center" }}>
@@ -134,6 +124,7 @@ const CartPage = () => {
                             disabled={isLoading}
                             variant="contained"
                             sx={{
+                                borderRadius: "8px",
                                 color: "#fffff",
                                 backgroundColor: "#FACE39",
                                 "&:hover": {
@@ -146,21 +137,49 @@ const CartPage = () => {
                         </Button>
                     </Box>
                 )}
-                <Box mt={2} sx={{ display: "flex", flexDirection: "column", alignContent: "center" }}>
-                    <Button
-                        variant="contained"
-                        sx={{
-                            backgroundColor: "#686868", color: "#ffffff", "&:hover": {
-                                backgroundColor: "#454545"
-                            },
-                        }}
-                        onClick={handleRedirectToHome}
-                    >
-                        Inicio
-                    </Button>
+
+
+
+
+                <Box
+                    sx={{
+                        alignContent: "center",
+                        display: 'flex',
+                        position: 'fixed',
+                        bottom: '10px',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        zIndex: 1000,
+                        width: '100%',
+                        maxWidth: '375px',
+                    }}
+                >
+                    {!isError && ordersList.length >= 1 && (
+                        <Button
+                            onClick={handleRedirectToConfirm}
+                            variant="contained"
+                            disabled={orderCount === 0}
+                            sx={{
+                                mt: 2,
+                                width: "100%",
+                                borderRadius: "8px",
+                                color: "#000000",
+                                backgroundColor: "#FACE39",
+                                "&:hover": {
+                                    backgroundColor: "#d6a400"
+                                },
+                                "&:disabled": {
+                                    backgroundColor: "#686868"
+                                }
+
+                            }}
+                        >
+                            Completar orden
+                        </Button>
+                    )}
                 </Box>
             </Box>
-        </Container>
+        </Container >
     );
 };
 

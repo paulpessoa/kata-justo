@@ -18,8 +18,8 @@ const OrderCard = ({ data, selected = false, handleSelect }: OrderData) => {
     }
 
     return (
-        <Card onClick={handleSelect} sx={{ cursor: "pointer", p: 2, maxWidth: 375, backgroundColor: selected ? "#AA0000" : "#212121", border: "1px solid #ffffff" }}>
-            <Typography variant="h4" sx={{ textAlign: "left", color: "#ffffff", fontSize: 18 }}># {data.id}</Typography>
+        <Card onClick={handleSelect} sx={{ cursor: "pointer", p: 2, maxWidth: 375, backgroundColor: selected ? "#AA0000" : "#212121", border: "1px solid #ffffff", borderRadius: "8px" }}>
+            <Typography variant="h4" sx={{ textAlign: "left", color: "#ffffff", fontSize: 18, fontWeight: 700 }}># {data.id}</Typography>
             <Divider sx={{ my: 1, backgroundColor: "white" }} />
 
             <Grid container spacing={2} alignItems="center">

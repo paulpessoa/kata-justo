@@ -21,6 +21,7 @@ const ConfirmationPage = () => {
                 Tu orden ha sido confirmada.
             </Typography>
             <Button sx={{
+                borderRadius: "8px",
                 color: "#000000",
                 backgroundColor: "#FACE39",
                 "&:hover": {
