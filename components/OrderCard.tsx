@@ -1,9 +1,7 @@
 import React from 'react';
 import { Card, Grid, Typography, Divider } from '@mui/material';
-import { Dayjs } from 'dayjs';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { OrderItem } from 'types';
 import Image from 'next/image';
 

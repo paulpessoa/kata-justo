@@ -9,7 +9,7 @@ const CartPage = () => {
     const router = useRouter();
     const { ordersList, setOrdersList, selectedItems, setSelectedItems } = useOrderStore();
 
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
     const orderCount = selectedItems.length;
@@ -21,6 +21,7 @@ const CartPage = () => {
 
     const handleRedirectToConfirm = () => {
         router.push('/confirm');
+        setSelectedItems([]);
     };
 
     const handleSelectOrder = (orderId: any) => {
@@ -35,19 +36,19 @@ const CartPage = () => {
     };
 
     const fetchOrders = async () => {
+        setIsLoading(true);
         try {
             const response = await getOrder();
-            setIsLoading(false);
             if (response.error) {
                 setOrdersList([]);
                 setIsError(true);
             } else {
                 setOrdersList(response.data);
             }
+            setIsLoading(false);
         } catch (error) {
             console.error("ERROU", error);
             setOrdersList([]);
-            setSelectedItems([]);
             setIsLoading(false);
             setIsError(true);
         }
@@ -61,9 +62,14 @@ const CartPage = () => {
         fetchOrders();
     }, []);
 
+    
     useEffect(() => {
-        document.title = `Kata Justo ${orderCount >= 1 ? `: ${orderCount} ${orderText}` : ''}`;
+        const title = orderCount >= 1 ? `: ${orderCount} ${orderText}` : ' - Vale!!';
+        document.title = 'Kata Justo' + title;
     }, [orderCount]);
+
+
+
 
     return (
         <Container>
@@ -125,6 +131,7 @@ const CartPage = () => {
                     <Box mt={2} sx={{ display: "flex", flexDirection: "column", alignContent: "center" }}>
                         <Typography variant="subtitle2" textAlign="center" mb={1} color="warning.light">Por fa, intenta nuevamente.</Typography>
                         <Button
+                            disabled={isLoading}
                             variant="contained"
                             sx={{
                                 color: "#fffff",
