@@ -69,7 +69,7 @@ const CartPage = () => {
 
     return (
         <Container  sx={{display: "flex", justifyContent: "center"}}>
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: "100vh" }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: "100vh", maxWidth: '375px' }}>
                 <Button
                     variant="contained"
                     sx={{
