@@ -62,18 +62,13 @@ const CartPage = () => {
         fetchOrders();
     }, []);
 
-
     useEffect(() => {
         const title = orderCount >= 1 ? `: ${orderCount} ${orderText}` : ' - Vale!!';
         document.title = 'Kata Justo' + title;
     }, [orderCount]);
 
-
-
-
     return (
-        <Container>
-            
+        <Container  sx={{display: "flex", justifyContent: "center"}}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: "100vh" }}>
                 <Button
                     variant="contained"
@@ -137,10 +132,6 @@ const CartPage = () => {
                         </Button>
                     </Box>
                 )}
-
-
-
-
                 <Box
                     sx={{
                         alignContent: "center",
